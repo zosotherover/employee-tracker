@@ -43,7 +43,13 @@ class Database {
     );
   }
 
- 
+  viewBy(column, table, message) {
+    this.connection.query(`SELECT ${column} FROM ${table}`, (err, result) => {
+      if (err) throw err;
+      const list = [];
+      result.forEach((item) => {
+        list.push(item.column);
+      });
       inquirer
         .prompt({
           type: "list",
@@ -64,7 +70,7 @@ class Database {
         if (err) throw err;
         const list = [];
         result.forEach((item) => {
-              list.push(item.department);
+          list.push(item.department);
         });
 
         inquirer
@@ -83,7 +89,7 @@ class Database {
               (err, result) => {
                 if (err) throw err;
                 console.log("answer.choice: ", answer.choice);
-                        console.table(result);
+                console.table(result);
               }
             );
           });
@@ -122,13 +128,12 @@ class Database {
     });
   }
 
-  
   employeesByManager() {
-        this.connection.query(`SELECT manager FROM employees`, (err, result) => {
+    this.connection.query(`SELECT manager FROM employees`, (err, result) => {
       if (err) throw err;
       const list = [];
       result.forEach((item) => {
-                list.push(item.manager);
+        list.push(item.manager);
       });
 
       inquirer
@@ -257,7 +262,7 @@ class Database {
                 );
               }
             });
-                    });
+          });
       }
     );
   }
@@ -291,16 +296,17 @@ class Database {
             [answer.department],
             (err, result) => {
               if (err) throw err;
-              console.log(`The deparment ${answer.department} was successfully added.`);
+              console.log(
+                `The deparment ${answer.department} was successfully added.`
+              );
             }
           );
         }
       });
   }
 
- 
   updateEmployeeRole() {
-       this.connection.query(
+    this.connection.query(
       `SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.id, roles.department_id, departments.department, departments.id, roles.salary, employees.manager FROM employees LEFT JOIN roles ON (employees.role_id = roles.id) LEFT JOIN departments ON (roles.department_id = departments.id)`,
       (err, result) => {
         if (err) throw err;
