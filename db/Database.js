@@ -23,9 +23,6 @@ const Database {
     }
 }
 
-
-
-
 module.exports = new Database(connetion); */
 
 const connection = require("./connection");
