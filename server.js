@@ -1,18 +1,16 @@
 // require inquirer and console.table
 
-
-// create a prompt when the app is started 
+// create a prompt when the app is started
 // this will ask the user what they'd like to do
 // choices: [
-    {
+/* {
         name: 
         value: 
     }
-]
+] */
 
-//if the user selects to view employess, it's going to call the getEmployees function down below. 
+//if the user selects to view employess, it's going to call the getEmployees function down below.
 // inside of that function call the findEmplyees query function in the Database class that we created
-
 
 // require inquirer and console.table
 const inquirer = require("inquirer");
@@ -24,11 +22,9 @@ const db = new Database();
 
 const connection = require("./db/connection");
 
+// Prompt the user how they would like to begin then execute the corresponding function
 
-
-// Prompt the user how they would like to begin then execute the corresponding function 
-
-const startApp =()=> {
+const startApp = () => {
   inquirer
     .prompt([
       {
@@ -50,43 +46,31 @@ const startApp =()=> {
         ],
       },
     ])
-    .then((answer) =>{
-        if (answer.choice === "View All Employees") {
-          
-          db.viewEmployees();
-        } else if (answer.choice === "View All Employees By Department") {
-          
-          db.employeesByDepartment();
-        } else if (answer.choice === "View All Employees By Role") {
-          
-          db.employeesByRole();
-        } else if (answer.choice === "View all Employees By Manager") {
-         
-          db.employeesByManager();
-        } else if (answer.choice === "Add Employee") {
-
-          db.addEmployee();
-        } else if (answer.choice === "Add Role") {
-          db.addRole();
-        } else if (answer.choice === "Add Department") {
-
-          db.addDepartment();
-        }
-          else if (answer.choice === "Update Employee Role") {
-          db.updateEmployeeRole();
-        } else if (answer.choice === "View All Roles") {
-          
-          db.viewAllRoles();
-        } else if (answer.choice === "View All Departments") {
-          
-          db.viewAllDepartments();
-        } else {
-          
-          db.quitApp();
-        }
+    .then((answer) => {
+      if (answer.choice === "View All Employees") {
+        db.viewEmployees();
+      } else if (answer.choice === "View All Employees By Department") {
+        db.employeesByDepartment();
+      } else if (answer.choice === "View All Employees By Role") {
+        db.employeesByRole();
+      } else if (answer.choice === "View all Employees By Manager") {
+        db.employeesByManager();
+      } else if (answer.choice === "Add Employee") {
+        db.addEmployee();
+      } else if (answer.choice === "Add Role") {
+        db.addRole();
+      } else if (answer.choice === "Add Department") {
+        db.addDepartment();
+      } else if (answer.choice === "Update Employee Role") {
+        db.updateEmployeeRole();
+      } else if (answer.choice === "View All Roles") {
+        db.viewAllRoles();
+      } else if (answer.choice === "View All Departments") {
+        db.viewAllDepartments();
+      } else {
+        db.quitApp();
       }
-    );
-}
-
+    });
+};
 
 startApp();
