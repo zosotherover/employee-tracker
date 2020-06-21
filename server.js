@@ -14,7 +14,6 @@
 
 // require inquirer and console.table
 const inquirer = require("inquirer");
-//const cTable = require("console.table");
 
 // require the Database class
 const Database = require("./db/Database");

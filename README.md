@@ -9,3 +9,13 @@ This is a command-line application that allows the user to:
 * View departments, roles, employees
 
 - Update employee roles
+
+# Technologies Used:
+
+MySQL
+
+Node JS
+
+Inquirer
+
+# Video of the app in use:
