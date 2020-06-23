@@ -19,3 +19,5 @@ Node JS
 Inquirer
 
 # Video of the app in use:
+
+[demo video](https://photos.app.goo.gl/SE4ZkoLdNH55KTAP8)
